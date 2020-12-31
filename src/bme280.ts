@@ -20,7 +20,7 @@ export default class BME280 {
   private i2cBus: I2cBus.PromisifiedBus;
   private calibration: Calibration;
 
-  constructor(config: Config) {
+  constructor(config?: Config) {
     this.config = config ? config : defaultConfig;
   }
 
