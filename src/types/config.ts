@@ -1,5 +1,5 @@
 export type Config = {
-  useAuth: boolean,
-  port: number,
-  confirmationPort?: number,
+  bus: number,
+  i2cAdress: number,
+  sensorElevation: number,
 };
