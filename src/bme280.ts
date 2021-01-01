@@ -1,3 +1,5 @@
+import I2cBus from 'i2c-bus';
+
 import {defaultConfig} from './default-config';
 
 import {
@@ -12,7 +14,7 @@ import {
   Standby,
 } from './types/index';
 
-import I2cBus from 'i2c-bus';
+export * from './types/config';
 
 export default class BME280 {
   private config: Config;
