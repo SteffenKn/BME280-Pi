@@ -1,6 +1,6 @@
 {
   "name": "bme280-pi",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "description": "BME280-Pi is a module for reading BME280 sensors via i2c.",
   "main": "dist/bme280.js",
   "scripts": {
