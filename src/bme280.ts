@@ -45,12 +45,10 @@ export default class BME280 {
     while (await this.isReadingCalibration()) {
       await this.wait(112);
     }
+    await this.wakeDeviceUp();
   }
 
   public async getPressure(): Promise<number> {
-    await this.wakeDeviceUp();
-
-    // read the entire data block at once and pry out the values as we need them
     const meassurementResult: Buffer = await this.readRegisters(Register.PRESSUREDATA, 6);
 
     const tFine: number = this.calculateTFine(this.uint20(meassurementResult[3], meassurementResult[4], meassurementResult[5]));
@@ -63,9 +61,6 @@ export default class BME280 {
   }
 
   public async getTemperature(): Promise<number> {
-    await this.wakeDeviceUp();
-
-    // read the entire data block at once and pry out the values as we need them
     const meassurementResult: Buffer = await this.readRegisters(Register.TEMPDATA, 3);
 
     const tFine: number = this.calculateTFine(this.uint20(meassurementResult[0], meassurementResult[1], meassurementResult[2]));
@@ -75,9 +70,6 @@ export default class BME280 {
   }
 
   public async getHumidity(): Promise<number> {
-    await this.wakeDeviceUp();
-
-    // read the entire data block at once and pry out the values as we need them
     const meassurementResult: Buffer = await this.readRegisters(Register.TEMPDATA, 5);
 
     const tFine: number = this.calculateTFine(this.uint20(meassurementResult[0], meassurementResult[1], meassurementResult[2]));
